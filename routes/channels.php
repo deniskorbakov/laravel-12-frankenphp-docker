@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Broadcast;
+declare(strict_types=1);
 
-Broadcast::channel('exampleChannel', static function (): bool {
-    return true;
-});
+use Illuminate\Support\Facades\Broadcast;
+use App\Broadcasting\ExampleChannel;
+
+Broadcast::channel('exampleChannel', ExampleChannel::class);
