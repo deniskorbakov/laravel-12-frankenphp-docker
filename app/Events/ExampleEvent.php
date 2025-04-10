@@ -35,7 +35,7 @@ class ExampleEvent implements ShouldBroadcast
     public function broadcastWith(): array
     {
         return [
-            'date' => Carbon::now()->format('Y-m-d'),
+            'date' => Carbon::now()->format('Y-m-d H:i:s'),
         ];
     }
 }
