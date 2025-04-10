@@ -31,7 +31,8 @@ services:
             dockerfile: .docker/php/Dockerfile
         container_name: php.${APP_NAMESPACE}
         ports:
-            - "8000:8000"
+            - '8000:8000'
+            - '${REVERB_SERVER_PORT}:9009'
         volumes:
             - .:/app
         depends_on:
