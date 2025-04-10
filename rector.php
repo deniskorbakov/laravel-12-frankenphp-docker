@@ -13,6 +13,7 @@ use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
 use Rector\CodingStyle\Rector\PostInc\PostIncDecToPreIncDecRector;
 use Rector\CodingStyle\Rector\String_\SymplifyQuoteEscapeRector;
 use Rector\Config\RectorConfig;
+use Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPrivateMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
 use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
@@ -69,6 +70,7 @@ return static function (RectorConfig $rectorConfig): void {
     // Skip specific rules
     $rectorConfig->skip([
         CompactToVariablesRector::class,
+        RemoveEmptyClassMethodRector::class,
         __DIR__ . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
     ]);
 
