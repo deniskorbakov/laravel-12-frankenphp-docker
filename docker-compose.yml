@@ -62,6 +62,8 @@ services:
 volumes:
     pg_data:
     redis_data:
+    beszel_data:
+    beszel_socket:
 networks:
     app:
         driver: bridge
