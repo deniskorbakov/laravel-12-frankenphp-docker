@@ -1,7 +1,4 @@
-<div align="center">
- <h1>FrankenPHP and Laravel 12 Octane with Docker</h1>
-</div>
-<br>
+# FrankenPHP and Laravel 12 Octane with Docker
 
 This template was created for a quick start of a Laravel project with already 
 prepared basic logic and is required by the environment:
@@ -10,7 +7,7 @@ prepared basic logic and is required by the environment:
 
 * Laravel 12
 * Frankenphp
-* PostgreSQL
+* Postgres
 * Redis
 * Supervisor
 * Traefik
@@ -37,7 +34,7 @@ prepared basic logic and is required by the environment:
 
 * Multi-stage build
 * Prepared assembly for local development and sales
-* Configured github actions for stat analyzers and deployment
+* Configured GitHub actions for stat analyzers and deployment
 * Customized role system
 
 ## Installation
@@ -46,7 +43,7 @@ To start the template you will need git and docker/docker compose
 
 **Performing steps:**
 
-You can also submit a template to yourself through the Github interface
+You can also submit a template to yourself through the GitHub interface
 ```bash
 git clone https://github.com/deniskorbakov/laravel-12-frankenphp-docker.git
 ```

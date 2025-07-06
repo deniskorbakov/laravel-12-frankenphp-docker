@@ -1,49 +1,47 @@
-# Стандарты проверка кода
+# Code Checking Standards
 
-В данном шаблоне используются следующие стат анализаторы:
+This template uses the following stat analyzers:
 
-* [phpstan(larastan)](https://github.com/larastan/larastan) 
+* [phpstan(larastan)](https://github.com/larastan/larastan)
 * [codesniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * [rector](https://github.com/driftingly/rector-laravel)
 
 ## PhpStan
 
-[Документация](https://phpstan.org/)
+[Documentation](https://phpstan.org/)
 
-Это статический анализатор кода, который проверяет ваш код на 
-типизацию до выполнения исполняемого кода
+This is a static code analyzer that checks your code for
+typing before executing the code
 
 ## CodeSniffer
 
-Это инструмент для проверка кода по стандартам в мире пхп
+This is a tool for checking code according to standards in the PHP world
 
 ## Rector
 
-Это инструмент автоматического рефакторинга который проверяет код - отличие от CodeSniffer в том что он может исправить 
-код и так же может изменить конструкции (убрать лишний else и тд)
+This is an automatic refactoring tool that checks the code - the difference from CodeSniffer is that it can fix
+the code and can also change the constructions (remove the extra else, etc.)
 
-так же для удобства можно его установить плагином в phpstorm и исправить код через alt+enter
+for convenience, you can also install it as a plugin in phpstorm and fix the code via alt+enter
 
-## Использование
+## Usage
 
-Команда которая запускает сразу 3 утилиты на проверку кода
+A command that runs 3 utilities at once to check the code
 
 ```bash
 make code-check
 ```
 
-Команда для исправление кода (только для rector)
+A command to fix the code (only for rector)
 
 ```bash
 make rector-fix
 ```
 
-Команда для сокрытия ошибок (только для phpstan) позволять скрыть ошибки в файл phpstan-baseline.neon и продолжить корректную работа phpstan
+A command to hide errors (only for phpstan) allows you to hide errors in the phpstan-baseline. neon file and continue the correct operation of phpstan
 
-Если же вы исправляете ошибки и выполните данную команду - то она из файла phpstan-baseline.neon уберет ошибки
+If you are fixing errors and run this command, it will remove errors from the phpstan-baseline. neon file
 
 ```bash
 make code-baseline
 ```
-
-

@@ -1,7 +1,7 @@
-# Почта
+# Mail
 
-Для локального теста используется mailihog
+For local testing, mailihog is used
 
-При работе уже в боевой среде надо использовать данные от внешнего smpt сервера
+When working in a production environment, you need to use data from an external smpt server
 
-``localhost:8100 - для локальных писем``
+``localhost:8100 - for local emails``

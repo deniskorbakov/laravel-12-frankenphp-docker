@@ -1,9 +1,9 @@
-# Работа с файлами
+# Working with files
 
-для описания файлов используется готовая таблица файлов с которой можно будет связать таблицы
+A ready-made file table is used to describe files, with which tables can be linked
 
-описание связей используется с модели users
+The description of links is used with the users model
 
-Для работы с файлами описана логика сохранения в рандомную папку + изменение имени файла чтоб нельзя было перебрать путь к файлу и найти его местоположение 
+To work with files, the logic of saving to a random folder is described + changing the file name so that it is impossible to sort out the path to the file and find its location
 
-в /storage/app/public создать папку files - это папка используется по умолчанию для сохранения файлов
+Create a files folder in /storage/app/public - this folder is used by default to save files

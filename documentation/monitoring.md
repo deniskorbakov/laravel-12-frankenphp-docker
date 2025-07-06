@@ -1,12 +1,12 @@
 # Beszel - monitoring
 
-Гайд для установки - https://beszel.dev/guide/getting-started
+Installation guide - https://beszel.dev/guide/getting-started
 
-Надо выполнить все настройки из гайда только до деплоя добавить в env
+You need to complete all the settings from the guide, only add to env before deployment
 
 BESZEL_PORT="" <br>
 BESZEL_KEY=""
 
-Данные взять из "Add new system" из дашборада
+Take data from "Add new system" from the dashboard
 
-Дашборд будет доступен по - http://127.0.0.1:8090/
+The dashboard will be available at - http://127.0.0.1:8090/
