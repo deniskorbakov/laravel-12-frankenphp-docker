@@ -1,9 +1,9 @@
 name: DEPLOY AND BUILD
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   coding-standard:
@@ -47,8 +47,8 @@ jobs:
         run: php artisan test
   deploy:
     runs-on: [ ubuntu-latest ]
-    # used your namespace secrect
-    environment: deniskorbakov
+    # used your GitHub environment
+    environment: your_environment
     needs: coding-standard
     if: github.ref == 'refs/heads/main'
     steps:
