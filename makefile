@@ -1,12 +1,12 @@
 include .env
 
-# набор команд для обновление проекта в продакшене
+# a set of commands for updating a project in production
 update-project: pull composer-install db-migrate build-front rm-images build-prod doc-generate restart
 
-# набор команд для инициализации проекта локально
+# a set of commands to initialize a project locally
 init: build composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-wait
 
-# набор команд для инициализации проекта на проде
+# a set of commands for initializing a project on production
 init-prod: build-prod composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-prod
 
 build:
@@ -24,7 +24,7 @@ build-prod:
 up-prod:
 	@echo "Starting containers"
 	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --wait --remove-orphans
-shell:
+exec:
 	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) /bin/bash
 code-check:
 	@echo "Perform a static analysis of the code base"
