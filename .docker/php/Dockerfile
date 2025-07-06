@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1.4 AS base
+FROM dunglas/frankenphp AS base
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -20,10 +20,10 @@ RUN install-php-extensions \
 
 WORKDIR /app
 
-COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-COPY --from=node:23 /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node:23 /usr/local/bin/node /usr/local/bin/node
+COPY --from=node:latest /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node:latest /usr/local/bin/node /usr/local/bin/node
 
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
