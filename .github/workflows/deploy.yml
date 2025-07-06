@@ -45,20 +45,21 @@ jobs:
 
       - name: Test
         run: php artisan test
-  deploy:
-    runs-on: [ ubuntu-latest ]
-    # used your GitHub environment
-    environment: your_environment
-    needs: coding-standard
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4.2.2
-      - name: Push to server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            make update-project
+# --- uncomment lines at deploy on server
+#  deploy:
+#    runs-on: [ ubuntu-latest ]
+#    # used your GitHub environment
+#    environment: your_environment
+#    needs: coding-standard
+#    if: github.ref == 'refs/heads/main'
+#    steps:
+#      - uses: actions/checkout@v4.2.2
+#      - name: Push to server
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.SERVER_IP }}
+#          username: ${{ secrets.SERVER_USERNAME }}
+#          password: ${{ secrets.SERVER_PASSWORD }}
+#          script: |
+#            cd ${{ secrets.PROJECT_PATH }}
+#            make update-project
