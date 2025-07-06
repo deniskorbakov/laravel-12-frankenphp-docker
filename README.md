@@ -1,31 +1,78 @@
-# Frankenphp laravel docker - template
+<div align="center">
+ <h1>FrankenPHP and Laravel 12 Octane with Docker</h1>
+</div>
+<br>
 
-* ### [Документация по шаблону и инструкции по развертыванию](documentation)
+This template was created for a quick start of a Laravel project with already 
+prepared basic logic and is required by the environment:
 
-## Описание шаблона
+**Docker images - utilities:**
 
-Данный шаблон содержит в себе готовую среду для разработки laravel + frankenphp + docker
+* Laravel 12
+* Frankenphp
+* PostgreSQL
+* Redis
+* Supervisor
+* Traefik
+* Mailhog
+* Beszel
 
-### Технологии:
+**Auxiliary services:**
 
-* laravel 12
-* frankenphp + laravel/octane
-* php 8.4^
-* docker
-* horizon
-* pest
-* rector
-* phpstan
-* php_codesniffer
-* laravel-data
-* filament
+* Rector + Phpstan + Php_codesniffer
+* Pest
 
-### Локальная разработка:
+**Libraries - prepared code:**
 
+* DTO Laravel-data
+* WebSocket - laravel/reverb
+* Horizon
+* laravel/octane
+* Admin panel - Filament
+* API logic auth
+* Logic saved files in storage - db
+* Scribe API doc
+
+**Additional functionality:**
+
+* Multi-stage build
+* Prepared assembly for local development and sales
+* Configured github actions for stat analyzers and deployment
+* Customized role system
+
+## Installation
+
+To start the template you will need git and docker/docker compose
+
+**Performing steps:**
+
+You can also submit a template to yourself through the Github interface
 ```bash
-cp .env.example .env ; make init
+git clone https://github.com/deniskorbakov/laravel-12-frankenphp-docker.git
 ```
 
-Перейти по [ссылке](http://localhost)
+Let's go to the cloned repository
+```bash
+cd laravel-12-frankenphp-docker
+```
+
+Copy env example to env
+```bash
+cp .env.example .env
+```
+
+Let's run the command to start the project
+```bash
+make init
+```
+
+**Go to the project address:**
+- [API doc](http://localhost/api/docs)
+- [Admin panel](http://localhost/admin/login)
+- [Horizon - available only to users with the Developer role](http://localhost/horizon)
+
+## Documentation
+
+[Template documentation](documentation/README.md)
 
 
