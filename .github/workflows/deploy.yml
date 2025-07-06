@@ -47,6 +47,7 @@ jobs:
         run: php artisan test
   deploy:
     runs-on: [ ubuntu-latest ]
+    # used your namespace secrect
     environment: deniskorbakov
     needs: coding-standard
     if: github.ref == 'refs/heads/main'
