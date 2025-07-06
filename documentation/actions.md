@@ -1,20 +1,19 @@
-# Github Actions
+# GitHub Actions
 
-в данном шаблоне так же настроен автодеплой
+this template also has auto deployment configured
 
-Для автодеплоя на сервер нужно указать следующие переменные:
+For deployment to the server, you need to specify the following variables:
 
 ```dotenv
-# ip адрес сервера
+# server ip address
 SERVER_IP=
-# логин ssh
+# ssh login
 SERVER_USERNAME=
-# пароль ssh
+# ssh password
 SERVER_PASSWORD=
-# путь где лежит проект
+# path where the project is located
 PROJECT_PATH=
 ```
+Change in deploy.yml environment and uncomment lines
 
-Изменить в deploy.yml environment
-
-Атрибут environment - используется для указания какой именно пул секретов использовать (относится когда вы используете публичный репозиторий)
+environment attribute - used to specify which secret pool to use (relevant when you are using a public repository)

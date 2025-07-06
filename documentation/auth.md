@@ -1,11 +1,11 @@
-# Авторизация
+# Authorization
 
-Для авторизации используется Bearer-токен
+Bearer token is used for authorization
 
-роуты для авторизации
+routes for authorization
 
 api/login
 api/logout
 
-api/register - при регистрации надо указывать роль пользователя
-ручка для получение роле - api/users/roles
+api/register - when registering, you must specify the user role
+handle for getting the role - api/users/roles

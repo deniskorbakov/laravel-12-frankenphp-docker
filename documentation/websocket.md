@@ -1,7 +1,7 @@
 # websocket
 
-В данном шаблоне поднят свой вебсокет сервер с помощью пакета laravel reverb
+This template has its own websocket server raised using the laravel reverb package
 
-Сервер подыматься с помощью супервизора на 9009 порту (через докер открыт порт)
+The server is raised using the supervisor on port 9009 (the port is opened via docker)
 
-[Документация по вебсокетам](https://laravel.com/docs/11.x/broadcasting)
+[Websocket documentation](https://laravel.com/docs/11.x/broadcasting)

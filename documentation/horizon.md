@@ -1,8 +1,8 @@
-# Очереди
+# Queues
 
-Для работы с очередя используется horizon
+Horizon is used to work with queues
 
-он доступен по адресу - http://localhost/horizon
+It is available at - http://localhost/horizon
 
-Так же чтобы войти по этому адресу нужно быть авторизованным в системы и иметь роль разработчика
-остальным пользователям она не доступна
+Also, to enter this address, you need to be authorized in the system and have the developer role
+It is not available to other users
