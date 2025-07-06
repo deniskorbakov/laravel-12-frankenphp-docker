@@ -14,6 +14,6 @@ SERVER_PASSWORD=
 # path where the project is located
 PROJECT_PATH=
 ```
-Change in deploy.yml environment
+Change in deploy.yml environment and uncomment lines
 
 environment attribute - used to specify which secret pool to use (relevant when you are using a public repository)
