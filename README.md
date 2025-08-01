@@ -3,6 +3,9 @@
 This template was created for a quick start of a Laravel project with already 
 prepared basic logic and is required by the environment:
 
+<a href="https://github.com/deniskorbakov/laravel-12-frankenphp-docker"><img alt="" src="https://github.com/deniskorbakov/laravel-12-frankenphp-docker/actions/workflows/deploy.yml/badge.svg">
+</a>
+
 **Docker images - utilities:**
 
 * Laravel 12
