@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
+        "denis660/laravel-centrifugo": "^5.2",
         "filament/filament": "^3.3",
         "knuckleswtf/scribe": "^5.1",
         "laravel/framework": "^12.0",
