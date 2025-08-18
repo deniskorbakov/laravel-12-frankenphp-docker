@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Controllers;
+namespace App\Services\Auth;
 
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Hash;
-use App\DTO\User\UserAuthShowDTO;
-use App\DTO\Auth\AuthRegisterDTO;
 use App\DTO\Auth\AuthLoginDTO;
+use App\DTO\Auth\AuthRegisterDTO;
+use App\DTO\User\UserAuthShowDTO;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 final class AuthService
 {

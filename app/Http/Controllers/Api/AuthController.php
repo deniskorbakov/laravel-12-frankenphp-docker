@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\DTO\Auth\AuthLoginDTO;
+use App\DTO\Auth\AuthRegisterDTO;
+use App\Services\Auth\AuthService;
 use Illuminate\Validation\ValidationException;
 use Knuckles\Scribe\Attributes\Authenticated;
-use App\Services\Controllers\AuthService;
 use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Group;
-use App\DTO\Auth\AuthRegisterDTO;
-use App\DTO\Auth\AuthLoginDTO;
 
 #[Group('Авторизация')]
 final readonly class AuthController

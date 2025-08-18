@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\DTO\Email\EmailVerificationCodeDTO;
-use App\Services\Controllers\EmailVerificationService;
+use App\Services\Email\EmailVerificationService;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Group;

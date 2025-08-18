@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Controllers;
+namespace App\Services\User;
 
-use App\DTO\User\UserUpdateDTO;
 use App\DTO\User\UserShowDTO;
+use App\DTO\User\UserUpdateDTO;
 use App\Enums\UserRole;
 use App\Models\User;
 use App\Services\Files\RequestFileStorage;
