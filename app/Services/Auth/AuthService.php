@@ -17,7 +17,7 @@ final readonly class AuthService
 {
     public function __construct(
         private Centrifugo $centrifugo,
-    ){
+    ) {
     }
 
     /** @return array<string, mixed> */
@@ -48,7 +48,7 @@ final readonly class AuthService
         return UserAuthShowDTO::from($user)->toArray();
     }
 
-    /** @return array<string, string> */
+    /** @return array<string, mixed> */
     public function WSAuth(User $user): array
     {
         $token = $this->centrifugo->generateConnectionToken((string) $user->id);
