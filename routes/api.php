@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\WSController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['throttle:limit'])->group(static function (): void {
@@ -18,8 +17,7 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
 
     Route::middleware(['auth:sanctum'])->group(static function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
-
-        Route::get('/ws/auth', [WSController::class, 'auth'])->name('ws.auth');
+        Route::post('/ws/auth', [AuthController::class, 'WSAuth']);
 
         Route::group(['prefix' => 'emails'], static function (): void {
             Route::get('/send-verify-code', [EmailVerificationController::class, 'send']);
