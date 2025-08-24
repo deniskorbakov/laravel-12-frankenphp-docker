@@ -17,6 +17,7 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
 
     Route::middleware(['auth:sanctum'])->group(static function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
+        Route::post('/ws/auth', [AuthController::class, 'WSAuth']);
 
         Route::group(['prefix' => 'emails'], static function (): void {
             Route::get('/send-verify-code', [EmailVerificationController::class, 'send']);

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use Knuckles\Scribe\Attributes\Authenticated;
-use App\Services\Controllers\UserService;
-use Knuckles\Scribe\Attributes\BodyParam;
-use Knuckles\Scribe\Attributes\Group;
 use App\DTO\User\UserUpdateDTO;
 use App\Models\User;
+use App\Services\User\UserService;
+use Knuckles\Scribe\Attributes\Authenticated;
+use Knuckles\Scribe\Attributes\BodyParam;
+use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\UrlParam;
 
 #[Group('Пользователи')]

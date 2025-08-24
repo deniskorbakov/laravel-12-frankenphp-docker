@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Controllers;
+namespace App\Services\Email;
 
 use App\DTO\Email\EmailVerificationCodeDTO;
 use App\DTO\User\UserShowDTO;

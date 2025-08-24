@@ -1,4 +1,18 @@
 services:
+  centrifugo:
+    build:
+      dockerfile: .docker/centrifugo/Dockerfile
+      target: dev
+    container_name: centrifugo.${APP_NAMESPACE}
+    ports:
+      - '8089:8000'
+    networks:
+      - app
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+
   traefik:
     image: traefik:v3.4
     container_name: traefik.${APP_NAMESPACE}
