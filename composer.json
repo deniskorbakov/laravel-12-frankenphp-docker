@@ -8,12 +8,12 @@
     "require": {
         "php": "^8.4",
         "denis660/laravel-centrifugo": "^5.2",
+        "deniskorbakov/laravel-data-scribe": "^0.0.5",
         "filament/filament": "^3.3",
         "knuckleswtf/scribe": "^5.1",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.31",
         "laravel/octane": "^2.8",
-        "laravel/reverb": "^1.5",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.29",
