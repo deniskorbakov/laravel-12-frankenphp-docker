@@ -13,8 +13,6 @@ class ExampleCommand extends Command
 {
     public function handle(): void
     {
-        $this->info('Example command run');
-
         ExampleEvent::dispatch();
     }
 }
