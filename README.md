@@ -51,7 +51,7 @@ make init
 **Libraries - prepared code:**
 
 * DTO Laravel-data
-* WebSocket - laravel/reverb
+* WebSocket - centrifugo
 * Horizon
 * laravel/octane
 * Admin panel - Filament
@@ -65,6 +65,7 @@ make init
 * Prepared assembly for local development and sales
 * Configured GitHub actions for stat analyzers and deployment
 * Customized role system
+* Centrifugo real-time messaging server
 
 **Go to the project address:**
 - [API doc](http://localhost/api/docs)
