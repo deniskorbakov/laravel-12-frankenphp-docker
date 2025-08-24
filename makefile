@@ -26,7 +26,7 @@ up-prod:
 	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --wait --remove-orphans
 exec:
 	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) /bin/bash
-code-check:
+lint:
 	@echo "Perform a static analysis of the code base"
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) vendor/bin/phpstan analyse --memory-limit=2G
 	@echo "Perform a code rector"
