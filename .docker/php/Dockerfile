@@ -6,6 +6,9 @@ RUN apt-get update \
     unzip \
     librabbitmq-dev \
     libpq-dev \
+    aspell  \
+    aspell-en \
+    aspell-ru \
     supervisor
 
 RUN install-php-extensions \
@@ -16,7 +19,8 @@ RUN install-php-extensions \
     pdo_pgsql \
     pgsql \
     redis \
-    zip
+    zip \
+    intl
 
 WORKDIR /app
 
