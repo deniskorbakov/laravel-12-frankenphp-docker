@@ -1,0 +1,25 @@
+{
+  "preset": "laravel",
+  "ignore": {
+    "words": [
+      "php",
+      "dto",
+      "sha",
+      "centrifugo",
+      "js",
+      "postcss",
+      "phpcs",
+      "makefile",
+      "cors",
+      "filesystems",
+      "websocket",
+      "favicon"
+    ],
+    "paths": [
+      "/public/vendor",
+      "/public/fonts",
+      "/public/js",
+      "/lang/vendor"
+    ]
+  }
+}
