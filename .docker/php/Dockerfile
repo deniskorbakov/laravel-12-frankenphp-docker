@@ -8,7 +8,6 @@ RUN apt-get update \
     libpq-dev \
     aspell  \
     aspell-en \
-    aspell-ru \
     supervisor
 
 RUN install-php-extensions \
