@@ -33,6 +33,8 @@ lint:
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer cs-rector
 	@echo "Perform a code style check"
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer cs-check
+	@echo "Perform a words error check"
+	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer word-check
 rector-fix:
 	@echo "Fix code with rector"
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer cs-rector-fix
@@ -41,7 +43,7 @@ code-baseline:
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) vendor/bin/phpstan analyse --generate-baseline --memory-limit=2G
 composer-install:
 	@echo "Running composer install"
-	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install --ignore-platform-reqs
+	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer install
 db-migrate:
 	@echo "Running database migrations"
 	@docker exec -i $$(docker ps -q -f name=php.${APP_NAMESPACE}) php artisan migrate --force

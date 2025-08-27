@@ -4,7 +4,7 @@
 
 - [GitHub Actions](actions.md)
 - [Authorization](auth.md)
-- [Code standard](code_standart.md)
+- [Code standard](code_standard.md)
 - [Email](email.md)
 - [Working with files](files.md)
 - [Horizon](horizon.md)
