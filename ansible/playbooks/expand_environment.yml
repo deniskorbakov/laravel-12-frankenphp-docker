@@ -1,17 +1,7 @@
-- name: Push code on server
+- name: Expand the environment
   hosts: webservers
   vars_files:
     - ../vars/default.yml
   tasks:
-    - name: Sync code
-      ansible.builtin.synchronize:
-        src: { path_to_local_project }
-        dest: { path_to_remote_directory }
-        recursive: yes
-        delete: yes
-        rsync_opts:
-          - "--exclude=.git"
-          - "--exclude=.env"
-          - "--exclude=vendor"
-          - "--exclude=mode_modules"
-
+    - name: Copy code to remote server
+      ansible.builtin.include_tasks: ../tasks/sync_code.yml

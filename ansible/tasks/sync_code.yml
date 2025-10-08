@@ -1,0 +1,10 @@
+- name: Sync code
+  ansible.posix.synchronize:
+    src: "{{ path_to_local_project }}"
+    dest: "{{ path_to_remote_directory }}"
+    recursive: yes
+    rsync_opts:
+      - "--exclude=.git"
+      - "--exclude=.env"
+      - "--exclude=vendor"
+      - "--exclude=mode_modules"
