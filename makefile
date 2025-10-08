@@ -72,5 +72,7 @@ doc-generate:
 restart:
 	@echo "restart container"
 	@docker restart php.${APP_NAMESPACE}
+expand-server:
+	ansible-playbook -i ansible/inventory.ini ansible/playbooks/expand_environment.yml -e host=78.40.199.38
 
 
