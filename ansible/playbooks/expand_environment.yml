@@ -1,0 +1,17 @@
+- name: Push code on server
+  hosts: server
+  vars_files:
+    - ../vars/default.yml
+  tasks:
+    - name: Sync code
+      ansible.builtin.synchronize:
+        src: { path_to_local_project }
+        dest: { path_to_remote_directory }
+        recursive: yes
+        delete: yes
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=.env"
+          - "--exclude=vendor"
+          - "--exclude=mode_modules"
+
