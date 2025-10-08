@@ -1,5 +1,5 @@
 - name: Push code on server
-  hosts: server
+  hosts: webservers
   vars_files:
     - ../vars/default.yml
   tasks:
