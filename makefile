@@ -73,6 +73,6 @@ restart:
 	@echo "restart container"
 	@docker restart php.${APP_NAMESPACE}
 expand-server:
-	export ANSIBLE_HOST_KEY_CHECKING=False ; ansible-playbook -i ansible/inventory.ini ansible/playbooks/expand_environment.yml
+	ansible-playbook -i ansible/inventory.ini ansible/playbooks/expand_environment.yml
 
 
