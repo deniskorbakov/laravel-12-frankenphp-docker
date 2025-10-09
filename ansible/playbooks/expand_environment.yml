@@ -14,7 +14,7 @@
     - name: Setup Docker
       ansible.builtin.include_tasks: ../tasks/docker/setup.yml
 
-    - name: Copy code to server
+    - name: Clone Project
       ansible.builtin.include_tasks: ../tasks/sync/copy.yml
 
     - name: Init App
