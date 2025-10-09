@@ -1,6 +1,12 @@
 ---
-- name: Set sshpass
-  ansible.builtin.include_tasks: set_sshpass.yml
+- name: Setup sshpass
+  ansible.builtin.include_tasks: setup_sshpass.yml
+
+- name: Create Dir for Project
+  ansible.builtin.file:
+    path: "{{ path_to_remote_directory }}"
+    state: directory
+    mode: 0755
 
 - name: Sync code
   ansible.posix.synchronize:
