@@ -9,5 +9,7 @@
       - gnupg
       - make
       - sshpass
+      - git
+      - nginx
     state: present
     update_cache: yes
