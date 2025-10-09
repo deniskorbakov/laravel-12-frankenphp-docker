@@ -41,7 +41,6 @@ make init
 * Supervisor
 * Traefik
 * Mailhog
-* Beszel
 
 **Auxiliary services:**
 
