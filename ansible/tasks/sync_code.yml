@@ -1,3 +1,7 @@
+---
+- name: Set sshpass
+  ansible.builtin.include_tasks: set_sshpass.yml
+
 - name: Sync code
   ansible.posix.synchronize:
     src: "{{ path_to_local_project }}"
