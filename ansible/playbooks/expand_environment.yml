@@ -6,4 +6,7 @@
     - ../vars/default.yml
   tasks:
     - name: Copy code to remote server
-      ansible.builtin.include_tasks: ../tasks/sync_code.yml
+      ansible.builtin.include_tasks: ../tasks/sync/sync_code.yml
+
+    - name: Setup Docker
+      ansible.builtin.include_tasks: ../tasks/docker/setup_docker.yml
