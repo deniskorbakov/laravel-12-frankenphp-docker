@@ -1,3 +1,10 @@
 ---
 path_to_local_project: "../../../"
 path_to_remote_directory: "/var/www/laravel"
+domain: "testlara.duckdns.org"
+url: "https://{{ domain }}"
+os_environment:
+  - key: APP_URL
+    value: "{{ url }}"
+  - key: APP_PORT
+    value: "80"
