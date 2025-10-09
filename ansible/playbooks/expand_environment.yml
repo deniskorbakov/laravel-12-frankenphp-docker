@@ -1,5 +1,7 @@
 - name: Expand the environment
   hosts: webservers
+  become: true
+  gather_facts: true
   vars_files:
     - ../vars/default.yml
   tasks:
