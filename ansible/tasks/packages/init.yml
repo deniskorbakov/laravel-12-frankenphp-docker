@@ -1,0 +1,13 @@
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - gnupg
+      - make
+      - sshpass
+    state: present
+    update_cache: yes

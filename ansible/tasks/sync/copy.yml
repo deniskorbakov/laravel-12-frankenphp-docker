@@ -1,7 +1,4 @@
 ---
-- name: Setup sshpass
-  ansible.builtin.include_tasks: setup_sshpass.yml
-
 - name: Create Dir for Project
   ansible.builtin.file:
     path: "{{ path_to_remote_directory }}"
@@ -17,4 +14,5 @@
       - "--exclude=.git"
       - "--exclude=.env"
       - "--exclude=vendor"
+      - "--exclude=storage"
       - "--exclude=mode_modules"

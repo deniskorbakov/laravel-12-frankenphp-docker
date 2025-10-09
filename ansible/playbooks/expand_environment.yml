@@ -5,8 +5,17 @@
   vars_files:
     - ../vars/default.yml
   tasks:
-    - name: Copy code to remote server
-      ansible.builtin.include_tasks: ../tasks/sync/sync_code.yml
+    - name: Init Packages
+      ansible.builtin.include_tasks: ../tasks/packages/init.yml
+
+    - name: Setup System
+      ansible.builtin.include_tasks: ../tasks/system/setup.yml
 
     - name: Setup Docker
-      ansible.builtin.include_tasks: ../tasks/docker/setup_docker.yml
+      ansible.builtin.include_tasks: ../tasks/docker/setup.yml
+
+    - name: Copy code to server
+      ansible.builtin.include_tasks: ../tasks/sync/copy.yml
+
+    - name: Init App
+      ansible.builtin.include_tasks: ../tasks/app/init.yml
