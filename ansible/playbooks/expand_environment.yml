@@ -18,11 +18,11 @@
     - name: Init App
       ansible.builtin.include_tasks: ../tasks/app/init.yml
 
-    - name: Produce Certificates
-      ansible.builtin.include_tasks: ../tasks/system/cert.yml
-
     - name: Configure Nginx
       ansible.builtin.include_tasks: ../tasks/system/nginx.yml
+
+    - name: Produce Certificates
+      ansible.builtin.include_tasks: ../tasks/system/cert.yml
 
     - name: Rebuild App
       ansible.builtin.include_tasks: ../tasks/app/rebuild.yml
