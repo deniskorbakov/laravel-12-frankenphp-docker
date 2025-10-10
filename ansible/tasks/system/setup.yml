@@ -1,0 +1,5 @@
+---
+- name: Setup sshpass
+  ansible.builtin.command: sshpass -p '$rootPassword' ssh -o 'StrictHostKeyChecking=no' $isRoot@$Host "chmod u+x /home/$USER/Script.sh"
+  register: command_result
+  failed_when: "'FAILED' in command_result.stderr"

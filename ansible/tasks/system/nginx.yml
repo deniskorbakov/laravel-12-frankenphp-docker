@@ -1,0 +1,15 @@
+---
+- name: Delete default dir
+  ansible.builtin.file:
+    state: absent
+    path: /var/www/html
+
+- name: Copy config
+  ansible.builtin.template:
+    src: ../templates/nginx_conf.j2
+    dest: "/etc/nginx/sites-enabled/{{ domain }}"
+
+- name: Reload Nginx
+  ansible.builtin.systemd:
+    state: reloaded
+    name: nginx

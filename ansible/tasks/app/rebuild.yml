@@ -1,0 +1,7 @@
+---
+- name: Rebuild Project
+  ansible.builtin.command:
+    cmd: make update-project
+    chdir: "{{ path_to_remote_directory }}"
+  register: command_result
+  failed_when: "'FAILED' in command_result.stderr"

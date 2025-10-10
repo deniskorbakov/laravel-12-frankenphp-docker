@@ -1,0 +1,25 @@
+---
+- name: Check if directory exists
+  ansible.builtin.stat:
+    path: "{{ path_to_remote_directory }}"
+  register: project_dir_stat
+
+- name: Create project dir
+  ansible.builtin.file:
+    path: "{{ path_to_remote_directory }}"
+    state: directory
+    mode: 0755
+  when: not project_dir_stat.stat.exists
+
+- name: Git clone
+  block:
+    - name: Clone repository
+      ansible.builtin.git:
+        repo: "{{ repo_url }}"
+        dest: "{{ path_to_remote_directory }}"
+        version: "{{ branch | default('main') }}"
+      register: clone_result
+      retries: 3
+      delay: 5
+      until: clone_result is succeeded
+      when: not project_dir_stat.stat.exists

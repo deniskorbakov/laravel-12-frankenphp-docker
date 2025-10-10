@@ -41,7 +41,6 @@ make init
 * Supervisor
 * Traefik
 * Mailhog
-* Beszel
 
 **Auxiliary services:**
 
@@ -66,6 +65,7 @@ make init
 * Configured GitHub actions for stat analyzers and deployment
 * Customized role system
 * Centrifugo real-time messaging server
+* Ansible is configured to set up the production environment
 
 **Go to the project address:**
 - [API doc](http://localhost/api/docs)

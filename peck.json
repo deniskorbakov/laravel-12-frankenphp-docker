@@ -13,7 +13,9 @@
       "cors",
       "filesystems",
       "websocket",
-      "favicon"
+      "favicon",
+      "nginx",
+      "ansible"
     ],
     "paths": [
       "/public/vendor",

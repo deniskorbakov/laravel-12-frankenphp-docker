@@ -1,7 +1,7 @@
 include .env
 
 # a set of commands for updating a project in production
-update-project: pull composer-install db-migrate build-front rm-images build-prod doc-generate restart
+update-project: pull composer-install db-migrate build-front rm-images build-prod restart doc-generate
 
 # a set of commands to initialize a project locally
 init: build composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-wait
@@ -72,5 +72,7 @@ doc-generate:
 restart:
 	@echo "restart container"
 	@docker restart php.${APP_NAMESPACE}
+expand-server:
+	ansible-playbook -i ansible/inventory.ini ansible/playbooks/expand_environment.yml
 
 

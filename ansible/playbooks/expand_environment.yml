@@ -1,0 +1,28 @@
+- name: Expand the environment
+  hosts: webservers
+  vars_files:
+    - ../vars/default.yml
+  tasks:
+    - name: Init Packages
+      ansible.builtin.include_tasks: ../tasks/packages/init.yml
+
+    - name: Setup System
+      ansible.builtin.include_tasks: ../tasks/system/setup.yml
+
+    - name: Setup Docker
+      ansible.builtin.include_tasks: ../tasks/docker/setup.yml
+
+    - name: Clone Project
+      ansible.builtin.include_tasks: ../tasks/sync/copy.yml
+
+    - name: Init App
+      ansible.builtin.include_tasks: ../tasks/app/init.yml
+
+    - name: Configure Nginx
+      ansible.builtin.include_tasks: ../tasks/system/nginx.yml
+
+    - name: Produce Certificates
+      ansible.builtin.include_tasks: ../tasks/system/cert.yml
+
+    - name: Rebuild App
+      ansible.builtin.include_tasks: ../tasks/app/rebuild.yml

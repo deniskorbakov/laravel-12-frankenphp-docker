@@ -20,26 +20,3 @@ services:
       target: prod
     volumes:
       - .:/app
-  beszel:
-    image: henrygd/beszel:latest
-    container_name: beszel.${APP_NAMESPACE}
-    restart: unless-stopped
-    networks:
-      - app
-    ports:
-      - 8090:8090
-    volumes:
-      - beszel_data:/beszel_data
-      - beszel_socket:/beszel_socket
-  beszel-agent:
-    image: henrygd/beszel-agent:latest
-    container_name: beszel-agent.${APP_NAMESPACE}
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - beszel_socket:/beszel_socket
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      PORT: '${BESZEL_PORT}'
-      LISTEN: '${BESZEL_LISTEN}'
-      KEY: '${BESZEL_KEY}'

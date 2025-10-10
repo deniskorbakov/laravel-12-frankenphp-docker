@@ -1,0 +1,34 @@
+---
+- name: Create Storage Public Dir
+  ansible.builtin.file:
+    path: "{{ path_to_remote_directory }}/storage/app/public"
+    state: directory
+    mode: 0755
+
+- name: Copy env.example
+  ansible.builtin.copy:
+    src: "{{ path_to_remote_directory }}/.env.example"
+    dest: "{{ path_to_remote_directory }}/.env"
+    remote_src: yes
+
+- name: Copy centrifugo config
+  ansible.builtin.copy:
+    src: "{{ path_to_remote_directory }}/.docker/centrifugo/config-test.json"
+    dest: "{{ path_to_remote_directory }}/.docker/centrifugo/config.json"
+    remote_src: yes
+
+- name: Set vars in ENV
+  lineinfile:
+    path: "{{ path_to_remote_directory }}/.env"
+    state: present
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value}}"
+  with_items: "{{ os_environment }}"
+  become: yes
+
+- name: Init Project
+  ansible.builtin.command:
+    cmd: make init-prod
+    chdir: "{{ path_to_remote_directory }}"
+  register: command_result
+  failed_when: "'FAILED' in command_result.stderr"

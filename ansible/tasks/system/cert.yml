@@ -1,0 +1,16 @@
+---
+- name: Obtain SSL certificate with certbot
+  ansible.builtin.command: |
+    certbot \
+    --force-renewal \
+    --nginx \
+    --noninteractive \
+    --agree-tos \
+    --cert-name {{ domain }} \
+    -d {{ domain }} \
+    -m test@gmail.com \
+    --verbose
+  args:
+    creates: "/etc/letsencrypt/live/{{ domain }}/cert.pem"
+  become: yes
+  register: certbot_result

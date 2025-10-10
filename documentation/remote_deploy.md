@@ -18,3 +18,5 @@ $user->fill([
 ])->save();
 ```
 Create a files folder in /storage/app/public - this folder is used by default to save files
+
+Or expand using [Ansible](ansible.md)
