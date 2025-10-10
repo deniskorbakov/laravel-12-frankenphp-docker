@@ -1,20 +1,22 @@
 ---
-- name: Install cerbot
-  ansible.builtin.command: snap install --classic certbot
-  register: command_result
-  failed_when: "'FAILED' in command_result.stderr"
+- name: Ensure nginx is stopped for certbot verification
+  ansible.builtin.systemd:
+    name: nginx
+    state: stopped
+  become: yes
 
-- name: Produce Certificates
-  ansible.builtin.command:
-    argv:
-      - /snap/bin/certbot
-      - --force-renewal
-      - --nginx
-      - --noninteractive
-      - --agree-tos
-      - "--cert-name {{ domain }}"
-      - "-d {{ domain }}"
-      - -m test@gmail.com
-      - --verbose
-  register: command_result
-  failed_when: "'FAILED' in command_result.stderr"
+- name: Obtain SSL certificate with certbot
+  ansible.builtin.command: |
+    certbot \
+    --force-renewal \
+    --nginx \
+    --noninteractive \
+    --agree-tos \
+    --cert-name {{ domain }} \
+    -d {{ domain }} \
+    -m test@gmail.com \
+    --verbose
+  args:
+    creates: "/etc/letsencrypt/live/{{ domain }}/cert.pem"
+  become: yes
+  register: certbot_result
