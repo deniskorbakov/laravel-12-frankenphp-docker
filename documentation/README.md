@@ -12,5 +12,6 @@
 - [API doc](api_doc.md)
 - [Remote Deploy](remote_deploy.md)
 - [Websocket](websocket.md)
+- [Ansible](ansible.md)
 
 
