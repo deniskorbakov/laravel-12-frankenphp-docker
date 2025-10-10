@@ -2,8 +2,11 @@
 repo_url: "https://github.com/deniskorbakov/laravel-12-frankenphp-docker.git"
 path_to_local_project: "../../../"
 path_to_remote_directory: "/var/www/laravel"
-domain: "v496549.hosted-by-vdsina.com"
+domain: "your_domain"
+url: "https://{{ domain }}"
 os_environment:
+  - key: APP_URL
+    value: "{{ url }}"
   - key: APP_ENV
     value: "production"
   - key: APP_DEBUG
