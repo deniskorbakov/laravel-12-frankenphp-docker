@@ -11,5 +11,6 @@
       - sshpass
       - git
       - nginx
+      - socat
     state: present
     update_cache: yes
