@@ -1,10 +1,4 @@
 ---
-- name: Ensure nginx is stopped for certbot verification
-  ansible.builtin.systemd:
-    name: nginx
-    state: stopped
-  become: yes
-
 - name: Obtain SSL certificate with certbot
   ansible.builtin.command: |
     certbot \
