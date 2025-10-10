@@ -1,0 +1,67 @@
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    listen [::]:443 ssl;
+    listen 443 ssl;
+    http2  on;
+    server_name {{ domain }};
+    ssl_certificate     /etc/certs/{{ domain }}.cer;
+    ssl_certificate_key /etc/certs/{{ domain }}.cer.key;
+    server_tokens off;
+    root {{ path_to_remote_directory }}/public;
+
+    index index.php;
+
+    charset utf-8;
+
+    location /index.php {
+        try_files /not_exists @octane;
+    }
+
+    location / {
+        try_files $uri $uri/ @octane;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    access_log off;
+    error_log  /var/log/nginx/{{ domain }}-error.log error;
+
+    error_page 404 /index.php;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:8000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+
+    location @octane {
+        set $suffix "";
+
+        if ($uri = /index.php) {
+            set $suffix ?$query_string;
+        }
+
+        proxy_http_version 1.1;
+        proxy_set_header Host $http_host;
+        proxy_set_header Scheme $scheme;
+        proxy_set_header SERVER_PORT $server_port;
+        proxy_set_header REMOTE_ADDR $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        proxy_pass http://127.0.0.1:8000$suffix;
+    }
+}}
