@@ -1,4 +1,9 @@
 ---
+- name: Delete default dir
+  ansible.builtin.file:
+    state: absent
+    path: /var/www/html
+
 - name: Copy config
   ansible.builtin.template:
     src: ../templates/nginx_conf.j2
