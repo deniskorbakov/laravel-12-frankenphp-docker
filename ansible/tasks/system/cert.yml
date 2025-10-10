@@ -1,0 +1,21 @@
+---
+- name: Install acme
+  ansible.builtin.command: curl https://get.acme.sh | sh -s email=your@mail.com
+  register: command_result
+  failed_when: "'FAILED' in command_result.stderr"
+
+- name: Create certs dir
+  ansible.builtin.file:
+    path: "/etc/certs"
+    state: directory
+    mode: 0755
+
+- name: Produce Certificates
+  ansible.builtin.command:
+    argv:
+      - ~/.acme.sh/acme.sh
+      - "--issue --force --standalone -d {{ domain }}"
+      - "--fullchain-file /etc/certs/{{ domain }}.cer"
+      - "--key-file /etc/certs/{{ domain }}.cer.key"
+  register: command_result
+  failed_when: "'FAILED' in command_result.stderr"
