@@ -12,5 +12,7 @@
       - git
       - nginx
       - socat
+      - certbot
+      - python3-certbot-nginx
     state: present
     update_cache: yes
