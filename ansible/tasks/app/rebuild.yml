@@ -1,7 +1,22 @@
 ---
-- name: Rebuild Project
+- name: Pause for 1 min
+  ansible.builtin.pause:
+    minutes: 1
+
+- name: Restart app
+  ansible.builtin.command:
+    cmd: make restart
+    chdir: "{{ path_to_remote_directory }}"
+  become: yes
+  register: restart_result
+
+- name: Pause for 1 min
+  ansible.builtin.pause:
+    minutes: 1
+
+- name: Update project
   ansible.builtin.command:
     cmd: make update-project
     chdir: "{{ path_to_remote_directory }}"
-  register: command_result
-  failed_when: "'FAILED' in command_result.stderr"
+  become: yes
+  register: update_result
