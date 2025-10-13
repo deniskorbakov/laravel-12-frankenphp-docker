@@ -26,16 +26,16 @@ for convenience, you can also install it as a plugin in phpstorm and fix the cod
 
 ## Usage
 
-A command that runs 3 utilities at once to check the code
+A command that runs code check
 
 ```bash
-make code-check
+make lint
 ```
 
-A command to fix the code (only for rector)
+A command to fix the code
 
 ```bash
-make rector-fix
+make lint-fix
 ```
 
 A command to hide errors (only for phpstan) allows you to hide errors in the phpstan-baseline. neon file and continue the correct operation of phpstan
