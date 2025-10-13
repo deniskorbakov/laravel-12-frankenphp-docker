@@ -43,10 +43,16 @@ jobs:
           composer install --no-progress --no-suggest --prefer-dist --no-interaction
 
       - name: Check coding style
-        run: make lint
+        run: composer cs-check
+
+      - name: Check code rector
+        run: composer cs-rector
+
+      - name: Check words
+        run: composer word-check
 
       - name: Test
-        run: make test
+        run: php artisan test
 # --- uncomment lines at deploy on server
 #  deploy:
 #    runs-on: [ ubuntu-latest ]
