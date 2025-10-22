@@ -51,12 +51,13 @@ make init
 
 * DTO Laravel-data
 * WebSocket - centrifugo
-* Horizon
+* Horizon - monitoring queue
 * laravel/octane
 * Admin panel - Filament
 * API logic auth
 * Logic saved files in storage - db
 * Scribe API doc
+* Dozzle - monitoring containers
 
 **Additional functionality:**
 
@@ -66,6 +67,7 @@ make init
 * Customized role system
 * Centrifugo real-time messaging server
 * Ansible is configured to set up the production environment
+* Monitoring system
 
 **Go to the project address:**
 - [API doc](http://localhost/api/docs)

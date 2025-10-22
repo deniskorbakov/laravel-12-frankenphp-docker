@@ -1,7 +1,5 @@
 # websocket
 
-This template has its own websocket server raised using the laravel reverb package
+used centrifugo - https://centrifugal.dev/
 
-The server is raised using the supervisor on port 9009 (the port is opened via docker)
-
-[Websocket documentation](https://laravel.com/docs/11.x/broadcasting)
+article for work - https://dev.to/deniskorbakov/connecting-the-centrifugo-in-laravel-2l78
