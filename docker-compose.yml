@@ -48,7 +48,7 @@ services:
         volumes:
             - redis_data:/data
         ports:
-            - '${REDIS_PORT:-}:6379'
+            - '${REDIS_PORT}:6379'
         networks:
             - app
         healthcheck:
@@ -58,11 +58,17 @@ services:
             retries: 30
         expose:
           - 6379
+    dozzle:
+      container_name: dozzle.${APP_NAMESPACE}
+      image: amir20/dozzle:v8.14.5
+      restart: unless-stopped
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+        - '${DOZZLE_PORT}:8080'
 volumes:
     pg_data:
     redis_data:
-    beszel_data:
-    beszel_socket:
 networks:
     app:
         driver: bridge
