@@ -86,4 +86,26 @@ make init
 
 [Template documentation](documentation/README.md)
 
+## Usage
+
+The command for check code (phpstan, php cs, rector, peck)
+```bash
+make lint
+```
+
+The command for fix err (php cs, rector)
+```bash
+make lint-fix
+```
+
+The command for run tests
+```bash
+make test
+```
+
+The command for run test coverage
+```bash
+make 
+```
+
 
