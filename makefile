@@ -26,6 +26,12 @@ up-prod:
 	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --wait --remove-orphans
 exec:
 	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) /bin/bash
+test:
+	@echo "Run all tests"
+	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer tests
+test-coverage:
+	@echo "Run test coverage"
+	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer test-coverage
 lint:
 	@echo "Perform a code phpstan - phpcs"
 	@DOCKER_CLI_HINTS=false docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) composer cs-check

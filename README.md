@@ -1,6 +1,6 @@
 # FrankenPHP and Laravel 12 Octane with Docker
 
-This template was created for a quick start of a Laravel project with already 
+This template was created for a quick start of a Laravel project with already
 prepared basic logic and is required by the environment:
 
 <a href="https://github.com/deniskorbakov/laravel-12-frankenphp-docker"><img alt="" src="https://github.com/deniskorbakov/laravel-12-frankenphp-docker/actions/workflows/deploy.yml/badge.svg">
@@ -13,21 +13,25 @@ To start the template you will need git and docker/docker compose
 **Performing steps:**
 
 You can also submit a template to yourself through the GitHub interface
+
 ```bash
 git clone https://github.com/deniskorbakov/laravel-12-frankenphp-docker.git
 ```
 
 Let's go to the cloned repository
+
 ```bash
 cd laravel-12-frankenphp-docker
 ```
 
 Copy env example to env
+
 ```bash
 cp .env.example .env
 ```
 
 Let's run the command to start the project
+
 ```bash
 make init
 ```
@@ -51,12 +55,14 @@ make init
 
 * DTO Laravel-data
 * WebSocket - centrifugo
-* Horizon
+* Horizon - monitoring queue
 * laravel/octane
 * Admin panel - Filament
 * API logic auth
 * Logic saved files in storage - db
 * Scribe API doc
+* Dozzle - monitoring containers
+* Pulse - monitoring app
 
 **Additional functionality:**
 
@@ -66,14 +72,40 @@ make init
 * Customized role system
 * Centrifugo real-time messaging server
 * Ansible is configured to set up the production environment
+* Monitoring system
 
 **Go to the project address:**
+
 - [API doc](http://localhost/api/docs)
 - [Admin panel](http://localhost/admin/login)
+- [Dozzle](http://localhost:9100)
 - [Horizon - available only to users with the Developer role](http://localhost/horizon)
+- [Pulse - available only to users with the Developer role](http://localhost/pulse)
 
 ## Documentation
 
 [Template documentation](documentation/README.md)
+
+## Usage
+
+The command for check code (phpstan, php cs, rector, peck)
+```bash
+make lint
+```
+
+The command for fix err (php cs, rector)
+```bash
+make lint-fix
+```
+
+The command for run tests
+```bash
+make test
+```
+
+The command for run test coverage
+```bash
+make 
+```
 
 

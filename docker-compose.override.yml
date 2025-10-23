@@ -5,7 +5,7 @@ services:
       target: dev
     container_name: centrifugo.${APP_NAMESPACE}
     ports:
-      - '8089:8000'
+      - '${CENTRIFUGO_PORT}:8000'
     networks:
       - app
     ulimits:

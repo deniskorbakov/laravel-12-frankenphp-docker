@@ -19,4 +19,11 @@ $user->fill([
 ```
 Create a files folder in /storage/app/public - this folder is used by default to save files
 
+Update cred for monitoring [Dozzle](https://dozzle.dev/guide/authentication)
+
+Regenerate creds:
+```bash
+docker run -it --rm amir20/dozzle generate --name Admin --email me@email.net --password secret admin
+```
+
 Or expand using [Ansible](ansible.md)
