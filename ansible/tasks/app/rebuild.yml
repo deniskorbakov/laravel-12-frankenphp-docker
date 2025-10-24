@@ -1,7 +1,7 @@
 ---
-- name: Pause for 1 min
+- name: Pause for 2 min
   ansible.builtin.pause:
-    minutes: 1
+    minutes: 2
 
 - name: Restart app
   ansible.builtin.command:
@@ -10,9 +10,9 @@
   become: yes
   register: restart_result
 
-- name: Pause for 1 min
+- name: Pause for 2 min
   ansible.builtin.pause:
-    minutes: 1
+    minutes: 2
 
 - name: Update project
   ansible.builtin.command:
