@@ -28,10 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (! config('app.debug')) {
-            URL::forceScheme('https');
-        }
-
         Gate::define('viewPulse', function (User $user): bool {
             return $user->role === UserRole::Developer;
         });
