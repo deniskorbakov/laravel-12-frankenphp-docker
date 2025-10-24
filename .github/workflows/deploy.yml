@@ -39,7 +39,13 @@ jobs:
           composer install --no-progress --no-suggest --prefer-dist --no-interaction
 
       - name: Check coding style
-        run: composer lint
+        run: composer composer cs-check
+
+      - name: Check rector
+        run: composer composer cs-rector
+
+      - name: Check peck
+        run: composer word-check
 
       - name: Run tests
         run: composer tests
