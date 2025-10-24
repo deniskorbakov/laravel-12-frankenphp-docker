@@ -73,6 +73,7 @@ make init
 * Centrifugo real-time messaging server
 * Ansible is configured to set up the production environment
 * Monitoring system
+* Tess - Unit/Feature/Coverage/Architecture
 
 **Go to the project address:**
 
@@ -88,24 +89,34 @@ make init
 
 ## Usage
 
+The command for exec in app container
+
+```bash
+make exec
+```
+
 The command for check code (phpstan, php cs, rector, peck)
+
 ```bash
 make lint
 ```
 
 The command for fix err (php cs, rector)
+
 ```bash
 make lint-fix
 ```
 
 The command for run tests
+
 ```bash
 make test
 ```
 
 The command for run test coverage
+
 ```bash
-make 
+make test-coverage
 ```
 
 

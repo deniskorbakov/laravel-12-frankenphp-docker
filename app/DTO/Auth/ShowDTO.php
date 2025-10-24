@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\DTO\User;
+namespace App\DTO\Auth;
 
+use App\DTO\User\ShowDTO as UserShowDTO;
 use App\Models\User;
 use Spatie\LaravelData\Data;
 
-class UserAuthShowDTO extends Data
+class ShowDTO extends Data
 {
     public function __construct(
         public UserShowDTO $user,

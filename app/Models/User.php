@@ -10,8 +10,8 @@ use Carbon\Carbon;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Attributes\UseEloquentBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -20,11 +20,15 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read int $id
  * @property string $email
  * @property string $name
+ * @property string $password
  * @property ?int $avatar_id
  * @property ?Carbon $email_verified_at
  * @property UserRole $role
- * @property ?File $avatar
+ *
+ * @method hasRole(string $role)
+ * @method isEmailVerified()
  */
+#[UseEloquentBuilder(UserBuilder::class)]
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
@@ -69,19 +73,8 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    /** @return BelongsTo<File, $this> */
-    public function avatar(): BelongsTo
-    {
-        return $this->belongsTo(File::class, 'avatar_id');
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->role->canFullAccess();
-    }
-
-    public function newEloquentBuilder($query): UserBuilder
-    {
-        return new UserBuilder($query);
     }
 }

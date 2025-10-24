@@ -9,19 +9,15 @@ jobs:
   coding-standard:
     name: Coding Standard
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:latest
-      options: --privileged
-      env:
-        DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP
+      - name: Setup PHP with Xdebug
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          coverage: none
+          coverage: xdebug
+          tools: composer
 
       - name: Get composer cache directory
         id: composer-cache
@@ -38,21 +34,25 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get update
-          apt-get install -y aspell aspell-en
+          sudo apt-get update
+          sudo apt-get install -y aspell aspell-en
           composer install --no-progress --no-suggest --prefer-dist --no-interaction
 
       - name: Check coding style
         run: composer cs-check
 
-      - name: Check code rector
+      - name: Check rector
         run: composer cs-rector
 
-      - name: Check words
+      - name: Check peck
         run: composer word-check
 
-      - name: Test
-        run: php artisan test
+      - name: Run tests
+        run: composer tests
+
+      - name: Run test coverage
+        run: composer test-coverage
+
 # --- uncomment lines at deploy on server
 #  deploy:
 #    runs-on: [ ubuntu-latest ]

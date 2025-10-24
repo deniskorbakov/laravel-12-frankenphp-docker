@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\DTO\User\UserUpdateDTO;
+use App\DTO\User\UpdateDTO;
 use App\Models\User;
 use App\Services\User\UserService;
 use Knuckles\Scribe\Attributes\Authenticated;
-use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\UrlParam;
 
@@ -36,10 +35,10 @@ final readonly class UserController
      * @return array<string, mixed>
      */
     #[Authenticated]
-    #[UrlParam('userId', 'string', 'ID пользователя', example: 1)]
-    public function show(string $userId): array
+    #[UrlParam('userId', 'int', 'ID пользователя', example: 1)]
+    public function show(int $userId): array
     {
-        $user = User::query()->findOrFail((int) $userId);
+        $user = User::query()->findOrFail($userId);
 
         return $this->userService->show($user);
     }
@@ -51,12 +50,9 @@ final readonly class UserController
      */
     #[Authenticated]
     #[UrlParam('userId', 'string', 'ID пользователя', example: 1)]
-    #[BodyParam('name', 'string', 'Имя пользователя', required: true, example: 'username')]
-    #[BodyParam('email', 'string', 'Почта', required: true, example: 'test@example.com')]
-    #[BodyParam('avatar', 'file', 'Аватарка', required: false, nullable: true)]
-    public function update(string $userId, UserUpdateDTO $requestDTO): array
+    public function update(int $userId, UpdateDTO $requestDTO): array
     {
-        $user = User::query()->findOrFail((int) $userId);
+        $user = User::query()->findOrFail($userId);
 
         return $this->userService->update($user, $requestDTO);
     }

@@ -6,9 +6,9 @@ namespace App\DTO\Auth;
 
 use Spatie\LaravelData\Attributes\Validation\Password;
 use Spatie\LaravelData\Attributes\Validation\Email;
-use Spatie\LaravelData\Dto;
+use Spatie\LaravelData\Data;
 
-class AuthLoginDTO extends DTO
+class LoginDTO extends Data
 {
     public function __construct(
         #[Email]

@@ -12,6 +12,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\Channel;
 
+// @codeCoverageIgnoreStart
 class ExampleEvent implements ShouldBroadcast
 {
     use Dispatchable;
@@ -44,3 +45,4 @@ class ExampleEvent implements ShouldBroadcast
         ];
     }
 }
+// @codeCoverageIgnoreEnd

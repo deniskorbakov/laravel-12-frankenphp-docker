@@ -8,6 +8,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use denis660\Centrifugo\Centrifugo;
 use Illuminate\Console\Command;
 
+// @codeCoverageIgnoreStart
 #[AsCommand('centrifugo:run')]
 class CentrifugoCommand extends Command
 {
@@ -16,3 +17,4 @@ class CentrifugoCommand extends Command
         $centrifugo->publish('example', ['time' => now()]);
     }
 }
+// @codeCoverageIgnoreEnd
