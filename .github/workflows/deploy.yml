@@ -39,7 +39,7 @@ jobs:
           composer install --no-progress --no-suggest --prefer-dist --no-interaction
 
       - name: Check coding style
-        run: composer test
+        run: composer lint
 
       - name: Run tests
         run: composer tests
