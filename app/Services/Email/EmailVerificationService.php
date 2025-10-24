@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services\Email;
 
-use App\DTO\Email\EmailVerificationCodeDTO;
-use App\DTO\User\UserShowDTO;
+use App\DTO\Email\VerificationCodeDTO;
+use App\DTO\User\ShowDTO;
+use App\Enums\Key\CacheKey;
 use App\Mail\VerifyCodeMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
@@ -13,30 +14,34 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Random\RandomException;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 class EmailVerificationService
 {
     /** @return array<string, mixed> */
-    public function verify(EmailVerificationCodeDTO $requestDTO): array
+    public function verify(VerificationCodeDTO $requestDTO): array
     {
         $user = User::query()->findOrFail(auth()->id());
 
-        $key = 'email_verification_' . $user->id;
+        $key = CacheKey::EmailCode->keyById($user->id);
 
-        if ($user->email_verified_at) {
+        if ($user->isEmailVerified()) {
             abort(Response::HTTP_BAD_REQUEST, __('email.verified'));
         }
 
-        if (Cache::get($key) === $requestDTO->code) {
-            Cache::forget($key);
+        $cachedValue = Cache::get($key);
+        $code = is_numeric($cachedValue) ? (int)$cachedValue : null;
 
-            $user->email_verified_at = now();
-            $user->save();
-
-            return UserShowDTO::from($user)->toArray();
+        if ($code === null || $code !== $requestDTO->code) {
+            abort(Response::HTTP_BAD_REQUEST, __('email.err_code'));
         }
 
-        abort(Response::HTTP_BAD_REQUEST, __('email.err_verified'));
+        Cache::forget($key);
+
+        $user->email_verified_at = now();
+        $user->save();
+
+        return ShowDTO::from($user)->toArray();
     }
 
     /**
@@ -47,21 +52,21 @@ class EmailVerificationService
     {
         $user = User::query()->findOrFail(auth()->id());
 
-        $key = 'email_verification_' . $user->id;
+        $key = CacheKey::EmailCode->keyById($user->id);
 
-        if ($user->email_verified_at) {
+        if ($user->isEmailVerified()) {
             abort(Response::HTTP_BAD_REQUEST, __('email.verified'));
         }
 
         if (! Cache::get($key)) {
             $code = random_int(1000, 9999);
-            $ttl = now()->addMinutes(15);
+            $ttl = CacheKey::EmailCode->timeCache();
 
             Cache::put($key, $code, $ttl);
 
             try {
                 Mail::to($user->email)->send(new VerifyCodeMail($code));
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 Cache::forget($key);
                 Log::error($e->getMessage());
 

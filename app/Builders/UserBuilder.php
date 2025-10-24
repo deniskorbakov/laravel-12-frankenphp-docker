@@ -14,4 +14,9 @@ class UserBuilder extends Builder
     {
         return $this->where('role', $role)->exists();
     }
+
+    public function isEmailVerified(): bool
+    {
+        return $this->model->email_verified_at !== null;
+    }
 }

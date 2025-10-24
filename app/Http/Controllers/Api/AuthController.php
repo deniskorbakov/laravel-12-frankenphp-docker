@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\DTO\Auth\AuthLoginDTO;
-use App\DTO\Auth\AuthRegisterDTO;
+use App\DTO\Auth\LoginDTO;
+use App\DTO\Auth\RegisterDTO;
 use App\Models\User;
 use App\Services\Auth\AuthService;
+use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\BodyParam;
@@ -30,7 +31,7 @@ final readonly class AuthController
     #[BodyParam('email', 'string', 'Почта', required: true, example: 'test@example.com')]
     #[BodyParam('role', 'string', 'Получить роль для регистрации "/api/users/roles/"', required: true, example: 'user')]
     #[BodyParam('password', 'string', 'Пароль', required: true, example: 'password')]
-    public function register(AuthRegisterDTO $authRegisterDTO): array
+    public function register(RegisterDTO $authRegisterDTO): array
     {
         return $this->authService->register($authRegisterDTO);
     }
@@ -43,7 +44,7 @@ final readonly class AuthController
      */
     #[BodyParam('email', 'string', 'Почта', required: true, example: 'test@example.com')]
     #[BodyParam('password', 'string', 'Пароль', required: true, example: 'password')]
-    public function login(AuthLoginDTO $authLoginDTO): array
+    public function login(LoginDTO $authLoginDTO): array
     {
         return $this->authService->login($authLoginDTO);
     }
@@ -67,11 +68,13 @@ final readonly class AuthController
     /**
      * Выход из аккаунта
      *
-     * @return array<string, string>
+     * @return Response
      */
     #[Authenticated]
-    public function logout(): array
+    public function logout(): Response
     {
-        return $this->authService->logout();
+        $this->authService->logout();
+
+        return response()->noContent();
     }
 }

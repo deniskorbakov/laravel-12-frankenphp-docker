@@ -10,9 +10,9 @@ use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Password;
 use Spatie\LaravelData\Attributes\Validation\Unique;
-use Spatie\LaravelData\Dto;
+use Spatie\LaravelData\Data;
 
-class AuthRegisterDTO extends Dto
+class RegisterDTO extends Data
 {
     public function __construct(
         #[Unique('users'), Max(225)]

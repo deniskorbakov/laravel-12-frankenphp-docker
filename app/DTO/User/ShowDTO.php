@@ -9,14 +9,13 @@ use Spatie\LaravelData\Data;
 use App\Enums\UserRole;
 use App\Models\User;
 
-class UserShowDTO extends Data
+class ShowDTO extends Data
 {
     public function __construct(
         public int $id,
         public string $name,
         public string $email,
         public UserRole $role,
-        public ?string $avatar,
         public ?Carbon $emailVerified,
     ) {
     }
@@ -28,7 +27,6 @@ class UserShowDTO extends Data
             $user->name,
             $user->email,
             $user->role,
-            $user->avatar?->url,
             $user->email_verified_at
         );
     }

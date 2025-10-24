@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use App\DTO\Email\EmailVerificationCodeDTO;
+use App\DTO\Email\VerificationCodeDTO;
 use App\Services\Email\EmailVerificationService;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\BodyParam;
@@ -40,7 +40,7 @@ final readonly class EmailVerificationController
      */
     #[Authenticated]
     #[BodyParam('code', 'int', 'Код подтверждения', required: true, example: '1234')]
-    public function verify(EmailVerificationCodeDTO $requestDTO): array
+    public function verify(VerificationCodeDTO $requestDTO): array
     {
         return $this->emailVerificationService->verify($requestDTO);
     }

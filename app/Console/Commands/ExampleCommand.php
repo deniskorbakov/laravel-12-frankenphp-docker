@@ -8,6 +8,7 @@ use App\Events\ExampleEvent;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
+// @codeCoverageIgnoreStart
 #[AsCommand('example:run')]
 class ExampleCommand extends Command
 {
@@ -16,3 +17,4 @@ class ExampleCommand extends Command
         ExampleEvent::dispatch();
     }
 }
+// @codeCoverageIgnoreEnd
