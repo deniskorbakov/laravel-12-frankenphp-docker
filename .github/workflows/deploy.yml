@@ -9,28 +9,15 @@ jobs:
   coding-standard:
     name: Coding Standard
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:latest
-      options: --privileged
-      env:
-        DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP
+      - name: Setup PHP with Xdebug
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
           coverage: xdebug
           tools: composer
-
-      - name: Install and enable Xdebug
-        run: |
-          apt-get update
-          apt-get install -y php-dev php-pear
-          pecl install xdebug
-          echo "zend_extension=xdebug.so" > /etc/php/8.4/cli/conf.d/xdebug.ini
-          php -v
 
       - name: Get composer cache directory
         id: composer-cache
@@ -47,12 +34,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get update
-          apt-get install -y aspell aspell-en
+          sudo apt-get update
+          sudo apt-get install -y aspell aspell-en
           composer install --no-progress --no-suggest --prefer-dist --no-interaction
 
       - name: Check coding style
-        run: composer lint
+        run: composer test
 
       - name: Run tests
         run: composer tests
