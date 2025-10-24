@@ -24,7 +24,7 @@ final class UserService
         $roles = UserRole::publicRoles();
 
         return [
-            'roles' => array_map(static function ($theme): array {
+            'roles' => array_map(static function (UserRole $theme): array {
                 return [
                     'id'   => $theme->value,
                     'name' => $theme->displayName(),

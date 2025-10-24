@@ -67,8 +67,6 @@ final readonly class AuthController
 
     /**
      * Выход из аккаунта
-     *
-     * @return Response
      */
     #[Authenticated]
     public function logout(): Response
