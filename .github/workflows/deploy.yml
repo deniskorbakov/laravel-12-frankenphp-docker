@@ -39,10 +39,10 @@ jobs:
           composer install --no-progress --no-suggest --prefer-dist --no-interaction
 
       - name: Check coding style
-        run: composer composer cs-check
+        run: composer cs-check
 
       - name: Check rector
-        run: composer composer cs-rector
+        run: composer cs-rector
 
       - name: Check peck
         run: composer word-check
