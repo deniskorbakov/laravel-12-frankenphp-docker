@@ -16,6 +16,7 @@ use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPrivateMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
+use Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector;
 use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php81\Rector\Property\ReadOnlyPropertyRector;
@@ -30,49 +31,52 @@ use Rector\TypeDeclaration\Rector\Closure\ClosureReturnTypeRector;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 use Rector\ValueObject\PhpVersion;
+use RectorLaravel\Rector\StaticCall\MinutesToSecondsInCacheRector;
 use RectorLaravel\Set\LaravelLevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     // Paths to analyze
     $rectorConfig->paths([
-         __DIR__ . '/app',
-         __DIR__ . '/config',
-         __DIR__ . '/database',
-         __DIR__ . '/routes',
-         __DIR__ . '/tests',
-    ]);
+                             __DIR__ . '/app',
+                             __DIR__ . '/config',
+                             __DIR__ . '/database',
+                             __DIR__ . '/routes',
+                             __DIR__ . '/tests',
+                         ]);
 
     $rectorConfig->rules([
-        AddVoidReturnTypeWhereNoReturnRector::class,
-        DeclareStrictTypesRector::class,
-        ClosureReturnTypeRector::class,
-        ReturnTypeFromStrictTypedCallRector::class,
-        ReturnTypeFromStrictNewArrayRector::class,
-        ReturnTypeFromReturnDirectArrayRector::class,
-        TypedPropertyFromStrictConstructorRector::class,
-        CompleteDynamicPropertiesRector::class,
-        InlineArrayReturnAssignRector::class,
-        ExplicitBoolCompareRector::class,
-        SwitchNegatedTernaryRector::class,
-        NewlineBeforeNewAssignSetRector::class,
-        EncapsedStringsToSprintfRector::class,
-        PostIncDecToPreIncDecRector::class,
-        SymplifyQuoteEscapeRector::class,
-        RemoveUnusedPromotedPropertyRector::class,
-        RemoveUnusedPrivateMethodRector::class,
-        RemoveUnusedPrivatePropertyRector::class,
-        ClassPropertyAssignToConstructorPromotionRector::class,
-        ReadOnlyPropertyRector::class,
-        PrivatizeFinalClassMethodRector::class,
-        PrivatizeFinalClassPropertyRector::class,
-    ]);
+                             AddVoidReturnTypeWhereNoReturnRector::class,
+                             DeclareStrictTypesRector::class,
+                             ClosureReturnTypeRector::class,
+                             ReturnTypeFromStrictTypedCallRector::class,
+                             ReturnTypeFromStrictNewArrayRector::class,
+                             ReturnTypeFromReturnDirectArrayRector::class,
+                             TypedPropertyFromStrictConstructorRector::class,
+                             CompleteDynamicPropertiesRector::class,
+                             InlineArrayReturnAssignRector::class,
+                             ExplicitBoolCompareRector::class,
+                             SwitchNegatedTernaryRector::class,
+                             NewlineBeforeNewAssignSetRector::class,
+                             EncapsedStringsToSprintfRector::class,
+                             PostIncDecToPreIncDecRector::class,
+                             SymplifyQuoteEscapeRector::class,
+                             RemoveUnusedPromotedPropertyRector::class,
+                             RemoveUnusedPrivateMethodRector::class,
+                             RemoveUnusedPrivatePropertyRector::class,
+                             ClassPropertyAssignToConstructorPromotionRector::class,
+                             ReadOnlyPropertyRector::class,
+                             PrivatizeFinalClassMethodRector::class,
+                             PrivatizeFinalClassPropertyRector::class,
+                         ]);
 
     // Skip specific rules
     $rectorConfig->skip([
-        CompactToVariablesRector::class,
-        RemoveEmptyClassMethodRector::class,
-        __DIR__ . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
-    ]);
+                            CompactToVariablesRector::class,
+                            RemoveEmptyClassMethodRector::class,
+                            RemoveNonExistingVarAnnotationRector::class,
+                            MinutesToSecondsInCacheRector::class,
+                            __DIR__ . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
+                        ]);
 
     // Enable caching for Rector
     $rectorConfig->cacheDirectory(__DIR__ . '/storage/rector');
@@ -80,12 +84,12 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Apply sets for Laravel and general code quality
     $rectorConfig->sets([
-        LaravelLevelSetList::UP_TO_LARAVEL_110,
-        SetList::CODE_QUALITY,
-        SetList::TYPE_DECLARATION,
-        SetList::DEAD_CODE,
-        SetList::PRIVATIZATION,
-    ]);
+                            LaravelLevelSetList::UP_TO_LARAVEL_110,
+                            SetList::CODE_QUALITY,
+                            SetList::TYPE_DECLARATION,
+                            SetList::DEAD_CODE,
+                            SetList::PRIVATIZATION,
+                        ]);
 
     // Define PHP version for Rector
     $rectorConfig->phpVersion(PhpVersion::PHP_84);
