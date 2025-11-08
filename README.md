@@ -5,6 +5,7 @@ prepared basic logic and is required by the environment:
 
 <a href="https://github.com/deniskorbakov/laravel-12-frankenphp-docker"><img alt="" src="https://github.com/deniskorbakov/laravel-12-frankenphp-docker/actions/workflows/deploy.yml/badge.svg">
 </a>
+[![Wakatime](https://wakatime.com/badge/user/018b9f7a-8548-4f9d-9ebe-df3058a5bab7/project/99e0f23d-daed-4e57-bad1-153393493b85.svg)](https://wakatime.com/badge/user/018b9f7a-8548-4f9d-9ebe-df3058a5bab7/project/99e0f23d-daed-4e57-bad1-153393493b85)
 
 ## Installation
 
