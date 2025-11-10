@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bf237f9d342587a8519883543f7c0fe",
+    "content-hash": "45d635f9cefc5350e5431090ea7f3325",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -11357,23 +11357,24 @@
         },
         {
             "name": "peckphp/peck",
-            "version": "v0.1.3",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/peckphp/peck.git",
-                "reference": "907d7221b057519627811c7c752d65ffa9163dc1"
+                "reference": "f5bb798d5176c52793dc6c715b811f0320246d18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/peckphp/peck/zipball/907d7221b057519627811c7c752d65ffa9163dc1",
-                "reference": "907d7221b057519627811c7c752d65ffa9163dc1",
+                "url": "https://api.github.com/repos/peckphp/peck/zipball/f5bb798d5176c52793dc6c715b811f0320246d18",
+                "reference": "f5bb798d5176c52793dc6c715b811f0320246d18",
                 "shasum": ""
             },
             "require": {
                 "nunomaduro/termwind": "^1.17.0|^2.3.0",
                 "php": "^8.2",
                 "symfony/console": "^6.4.17|^7.2.1",
-                "symfony/finder": "^6.4.17|^7.2.2"
+                "symfony/finder": "^6.4.17|^7.2.2",
+                "symfony/process": "^6.4.17|^7.2.2"
             },
             "require-dev": {
                 "laravel/pint": "^1.20.0",
@@ -11411,7 +11412,7 @@
             ],
             "support": {
                 "issues": "https://github.com/peckphp/peck/issues",
-                "source": "https://github.com/peckphp/peck/tree/v0.1.3"
+                "source": "https://github.com/peckphp/peck/tree/v0.2.0"
             },
             "funding": [
                 {
@@ -11427,7 +11428,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-03-31T15:16:31+00:00"
+            "time": "2025-10-06T19:46:59+00:00"
         },
         {
             "name": "pestphp/pest",
