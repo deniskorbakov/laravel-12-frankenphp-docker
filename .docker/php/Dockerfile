@@ -43,6 +43,8 @@ CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.con
 
 FROM base AS prod
 
+COPY ./.docker/php/php.prod.ini /usr/local/etc/php/php.ini
+
 COPY ./.docker/supervisor/supervisord.prod.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

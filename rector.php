@@ -16,6 +16,7 @@ use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPrivateMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
+use Rector\DeadCode\Rector\MethodCall\RemoveNullArgOnNullDefaultParamRector;
 use Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector;
 use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
@@ -75,6 +76,7 @@ return static function (RectorConfig $rectorConfig): void {
                             RemoveEmptyClassMethodRector::class,
                             RemoveNonExistingVarAnnotationRector::class,
                             MinutesToSecondsInCacheRector::class,
+                            RemoveNullArgOnNullDefaultParamRector::class,
                             __DIR__ . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
                         ]);
 
