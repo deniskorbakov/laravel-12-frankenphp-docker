@@ -11,12 +11,6 @@
     dest: "{{ path_to_remote_directory }}/.env"
     remote_src: yes
 
-- name: Copy centrifugo config
-  ansible.builtin.copy:
-    src: "{{ path_to_remote_directory }}/.docker/centrifugo/config-test.json"
-    dest: "{{ path_to_remote_directory }}/.docker/centrifugo/config.json"
-    remote_src: yes
-
 - name: Set vars in ENV
   lineinfile:
     path: "{{ path_to_remote_directory }}/.env"

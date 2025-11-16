@@ -62,7 +62,6 @@ make init
 * API logic auth
 * Logic saved files in storage - db
 * Scribe API doc
-* Dozzle - monitoring containers
 * Pulse - monitoring app
 
 **Additional functionality:**
