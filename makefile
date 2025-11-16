@@ -20,10 +20,10 @@ up:
 	@docker compose --env-file .env up -d --remove-orphans
 build-prod:
 	@echo "Building containers"
-	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --wait --build
+	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --build
 up-prod:
 	@echo "Starting containers"
-	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --wait --remove-orphans
+	@docker compose -f docker-compose.yml -f docker-compose.prod.yml --env-file .env up -d --remove-orphans
 exec:
 	@docker exec -it $$(docker ps -q -f name=php.${APP_NAMESPACE}) /bin/bash
 test:
