@@ -1,18 +1,4 @@
 services:
-  centrifugo:
-    build:
-      dockerfile: .docker/centrifugo/Dockerfile
-      target: dev
-    container_name: centrifugo.${APP_NAMESPACE}
-    ports:
-      - '${CENTRIFUGO_PORT}:8000'
-    networks:
-      - app
-    ulimits:
-      nofile:
-        soft: 65535
-        hard: 65535
-
   traefik:
     image: traefik:v3.4
     container_name: traefik.${APP_NAMESPACE}
@@ -29,10 +15,13 @@ services:
       - app
 
   php:
+    container_name: php.${APP_NAMESPACE}
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
       target: dev
+    ports:
+      - '${APP_PORT}:8000'
     volumes:
       - .:/app
     labels:

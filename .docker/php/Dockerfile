@@ -30,9 +30,9 @@ COPY --from=node:latest /usr/local/bin/node /usr/local/bin/node
 
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
-FROM base AS dev
-
 COPY ./.docker/php/php.ini /usr/local/etc/php/php.ini
+
+FROM base AS dev
 
 RUN pecl install xdebug  \
     && docker-php-ext-enable xdebug
@@ -46,5 +46,17 @@ FROM base AS prod
 COPY ./.docker/php/php.prod.ini /usr/local/etc/php/php.ini
 
 COPY ./.docker/supervisor/supervisord.prod.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+FROM base AS schedule
+
+COPY ./.docker/supervisor/supervisord.schedule.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+FROM base AS queue
+
+COPY ./.docker/supervisor/supervisord.queue.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

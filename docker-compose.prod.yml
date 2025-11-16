@@ -1,22 +1,13 @@
 services:
-  centrifugo:
-    build:
-      dockerfile: .docker/centrifugo/Dockerfile
-      target: prod
-    container_name: centrifugo.${APP_NAMESPACE}
-    ports:
-      - '${CENTRIFUGO_PORT}:8000'
-    networks:
-      - app
-    ulimits:
-      nofile:
-        soft: 65535
-        hard: 65535
-
   php:
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
       target: prod
+    container_name: php.${APP_NAMESPACE}
+    ports:
+      - '${APP_PORT}:8000'
     volumes:
       - .:/app
+    networks:
+      - app

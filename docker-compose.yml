@@ -41,10 +41,10 @@ services:
                 condition: service_healthy
         networks:
             - app
+
     redis:
-        restart: unless-stopped
         container_name: redis.${APP_NAMESPACE}
-        image: redis:7.4.0
+        image: redis:8.2.0-alpine
         volumes:
             - redis_data:/data
         ports:
@@ -58,17 +58,52 @@ services:
             retries: 30
         expose:
           - 6379
-    dozzle:
-      container_name: dozzle.${APP_NAMESPACE}
-      image: amir20/dozzle:v8.14.5
-      restart: unless-stopped
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
+
+    centrifugo:
+      build:
+        dockerfile: .docker/centrifugo/Dockerfile
+      container_name: centrifugo.${APP_NAMESPACE}
       ports:
-        - '${DOZZLE_PORT}:8080'
+        - '${CENTRIFUGO_PORT}:8000'
+      networks:
+        - app
+      ulimits:
+        nofile:
+          soft: 65535
+          hard: 65535
+
+    queue:
+      container_name: queue.${APP_NAMESPACE}
+      build:
+        context: .
+        dockerfile: .docker/php/Dockerfile
+        target: queue
+      volumes:
+        - .:/app
+      restart: on-failure
+      networks:
+        - app
+      depends_on:
+          - php
+
+    schedule:
+      container_name: schedule.${APP_NAMESPACE}
+      build:
+        context: .
+        dockerfile: .docker/php/Dockerfile
+        target: schedule
+      volumes:
+        - .:/app
+      restart: on-failure
+      networks:
+        - app
+      depends_on:
+        - php
+
 volumes:
     pg_data:
     redis_data:
+
 networks:
     app:
         driver: bridge
