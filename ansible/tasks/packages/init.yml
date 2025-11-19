@@ -8,7 +8,6 @@
       - software-properties-common
       - gnupg
       - make
-      - sshpass
       - git
       - nginx
       - socat
