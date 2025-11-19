@@ -1,6 +1,5 @@
 ---
 repo_url: "https://github.com/deniskorbakov/laravel-12-frankenphp-docker.git"
-path_to_local_project: "../../../"
 path_to_remote_directory: "/var/www/laravel"
 domain: "your_domain"
 url: "https://{{ domain }}"
