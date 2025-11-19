@@ -44,7 +44,7 @@ services:
 
     redis:
         container_name: redis.${APP_NAMESPACE}
-        image: redis:8.2.0-alpine
+        image: redis:8.4.0-alpine
         volumes:
             - redis_data:/data
         ports:
