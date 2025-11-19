@@ -6,9 +6,6 @@
     - name: Init Packages
       ansible.builtin.include_tasks: ../tasks/packages/init.yml
 
-    - name: Setup System
-      ansible.builtin.include_tasks: ../tasks/system/setup.yml
-
     - name: Setup Docker
       ansible.builtin.include_tasks: ../tasks/docker/setup.yml
 
