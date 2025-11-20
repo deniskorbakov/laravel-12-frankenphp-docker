@@ -1,7 +1,7 @@
 services:
     db:
         container_name: db.${APP_NAMESPACE}
-        image: postgres:17
+        image: postgres:18
         environment:
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD}'
