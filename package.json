@@ -15,7 +15,7 @@
         "laravel-vite-plugin": "^1.2.0",
         "postcss": "^8.4.31",
         "tailwindcss": "^4.0.0",
-        "vite": "^6.0.11"
+        "vite": "^7.0.0"
     },
     "dependencies": {
         "chokidar": "^4.0.3"
