@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: traefik:v3.4
+    image: traefik:v3.6
     container_name: traefik.${APP_NAMESPACE}
     command:
       - --api.insecure=true
