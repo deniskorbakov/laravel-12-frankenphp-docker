@@ -1,109 +1,109 @@
 services:
-    db:
-        container_name: db.${APP_NAMESPACE}
-        image: postgres:18
-        environment:
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD}'
-            POSTGRES_DB: '${DB_DATABASE}'
-            PGDATA: '/var/lib/postgresql/data/pgdata'
-        volumes:
-            - pg_data:/var/lib/postgresql/data
-        ports:
-            - '${DB_PORT}:5432'
-        networks:
-            - app
-        healthcheck:
-            test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}" ]
-            interval: 10s
-            timeout: 5s
-            retries: 5
-            start_period: 10s
-        restart: unless-stopped
-        deploy:
-            resources:
-                limits:
-                    cpus: '1'
-                    memory: 4G
-    php:
-        build:
-            context: .
-            dockerfile: .docker/php/Dockerfile
-        container_name: php.${APP_NAMESPACE}
-        ports:
-            - '${APP_PORT}:8000'
-        volumes:
-            - .:/app
-        depends_on:
-            redis:
-                condition: service_healthy
-            db:
-                condition: service_healthy
-        networks:
-            - app
+  db:
+    container_name: db.${APP_NAMESPACE}
+    image: postgres:17
+    environment:
+      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      POSTGRES_DB: '${DB_DATABASE}'
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - '${DB_PORT}:5432'
+    networks:
+      - app
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G
+  php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    container_name: php.${APP_NAMESPACE}
+    ports:
+      - '${APP_PORT}:8000'
+    volumes:
+      - .:/app
+    depends_on:
+      kvrocks:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    networks:
+      - app
 
-    redis:
-        container_name: redis.${APP_NAMESPACE}
-        image: redis:8.4.0-alpine
-        volumes:
-            - redis_data:/data
-        ports:
-            - '${REDIS_PORT}:6379'
-        networks:
-            - app
-        healthcheck:
-            test: [ "CMD", "redis-cli", "ping" ]
-            interval: 1s
-            timeout: 3s
-            retries: 30
-        expose:
-          - 6379
+  kvrocks:
+    container_name: kvrocks.${APP_NAMESPACE}
+    image: apache/kvrocks:2.14.0
+    volumes:
+      - kvrocks_data:/kvrocks_data
+    ports:
+      - '${REDIS_PORT}:6666'
+    networks:
+      - app
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-p", "${REDIS_PORT}", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    expose:
+      - '${REDIS_PORT}'
 
-    centrifugo:
-      build:
-        dockerfile: .docker/centrifugo/Dockerfile
-      container_name: centrifugo.${APP_NAMESPACE}
-      ports:
-        - '${CENTRIFUGO_PORT}:8000'
-      networks:
-        - app
-      ulimits:
-        nofile:
-          soft: 65535
-          hard: 65535
+  centrifugo:
+    build:
+      dockerfile: .docker/centrifugo/Dockerfile
+    container_name: centrifugo.${APP_NAMESPACE}
+    ports:
+      - '${CENTRIFUGO_PORT}:8000'
+    networks:
+      - app
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 
-    queue:
-      container_name: queue.${APP_NAMESPACE}
-      build:
-        context: .
-        dockerfile: .docker/php/Dockerfile
-        target: queue
-      volumes:
-        - .:/app
-      restart: on-failure
-      networks:
-        - app
-      depends_on:
-          - php
+  queue:
+    container_name: queue.${APP_NAMESPACE}
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      target: queue
+    volumes:
+      - .:/app
+    restart: on-failure
+    networks:
+      - app
+    depends_on:
+      - php
 
-    schedule:
-      container_name: schedule.${APP_NAMESPACE}
-      build:
-        context: .
-        dockerfile: .docker/php/Dockerfile
-        target: schedule
-      volumes:
-        - .:/app
-      restart: on-failure
-      networks:
-        - app
-      depends_on:
-        - php
+  schedule:
+    container_name: schedule.${APP_NAMESPACE}
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      target: schedule
+    volumes:
+      - .:/app
+    restart: on-failure
+    networks:
+      - app
+    depends_on:
+      - php
 
 volumes:
-    pg_data:
-    redis_data:
+  pg_data:
+  kvrocks_data:
 
 networks:
-    app:
-        driver: bridge
+  app:
+    driver: bridge
