@@ -42,7 +42,7 @@ make init
 * Laravel 12
 * Frankenphp
 * Postgres
-* Redis
+* Kvrocks
 * Supervisor
 * Traefik
 * Mailhog
