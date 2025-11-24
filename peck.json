@@ -15,7 +15,8 @@
       "websocket",
       "favicon",
       "nginx",
-      "ansible"
+      "ansible",
+      "hadolint"
     ],
     "paths": [
       "/public/vendor",

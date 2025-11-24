@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp AS base
+FROM dunglas/frankenphp:1.9.1-php8.4.15-trixie AS base
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -8,7 +8,9 @@ RUN apt-get update \
     libpq-dev \
     aspell  \
     aspell-en \
-    supervisor
+    supervisor \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN install-php-extensions \
     gd \

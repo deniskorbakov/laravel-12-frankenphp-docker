@@ -81,5 +81,6 @@ restart:
 	@docker restart php.${APP_NAMESPACE}
 expand-server:
 	ansible-playbook -i ansible/inventory.ini ansible/playbooks/expand_environment.yml
-
-
+docker-lint:
+	docker run --rm -i -v ./hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint < .docker/php/Dockerfile
+	docker run --rm -i -v ./hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint < .docker/centrifugo/Dockerfile
