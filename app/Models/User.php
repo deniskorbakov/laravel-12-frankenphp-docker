@@ -24,7 +24,6 @@ use Laravel\Sanctum\HasApiTokens;
  * @property ?Carbon $email_verified_at
  * @property UserRole $role
  *
- * @method hasRole(string $role)
  * @method isEmailVerified()
  */
 class User extends Authenticatable implements FilamentUser
