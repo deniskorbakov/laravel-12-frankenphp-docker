@@ -89,7 +89,7 @@
     "cs-rector-fix": [
       "@php vendor/bin/rector"
     ],
-    "test-coverage": "@php vendor/bin/pest --coverage --min=80",
+    "test-coverage": "@php vendor/bin/pest --coverage --min=90",
     "tests": [
       "@php vendor/bin/pest"
     ]
