@@ -12,6 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Lint dockerfiles
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: .docker/php/Dockerfile
+          config: ./hadolint.yaml
+          recursive: true
+
       - name: Setup PHP with Xdebug
         uses: shivammathur/setup-php@v2
         with:
