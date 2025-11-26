@@ -2646,16 +2646,16 @@
         },
         {
             "name": "knuckleswtf/scribe",
-            "version": "5.5.0",
+            "version": "5.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/knuckleswtf/scribe.git",
-                "reference": "779f91aa01a18d271b2c8314d5c44635c7375dfc"
+                "reference": "0b7c6d90d239b8829d3449472516c5490cc1f154"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/779f91aa01a18d271b2c8314d5c44635c7375dfc",
-                "reference": "779f91aa01a18d271b2c8314d5c44635c7375dfc",
+                "url": "https://api.github.com/repos/knuckleswtf/scribe/zipball/0b7c6d90d239b8829d3449472516c5490cc1f154",
+                "reference": "0b7c6d90d239b8829d3449472516c5490cc1f154",
                 "shasum": ""
             },
             "require": {
@@ -2727,7 +2727,7 @@
             ],
             "support": {
                 "issues": "https://github.com/knuckleswtf/scribe/issues",
-                "source": "https://github.com/knuckleswtf/scribe/tree/5.5.0"
+                "source": "https://github.com/knuckleswtf/scribe/tree/5.6.0"
             },
             "funding": [
                 {
@@ -2735,7 +2735,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-10-25T17:58:31+00:00"
+            "time": "2025-11-23T17:50:45+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
