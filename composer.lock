@@ -2778,16 +2778,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.54.0",
+            "version": "v12.54.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e908e117421bcade301b174aba2d3e8cc1e1f213"
+                "reference": "325497463e7599cd14224c422c6e5dd2fe832868"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e908e117421bcade301b174aba2d3e8cc1e1f213",
-                "reference": "e908e117421bcade301b174aba2d3e8cc1e1f213",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/325497463e7599cd14224c422c6e5dd2fe832868",
+                "reference": "325497463e7599cd14224c422c6e5dd2fe832868",
                 "shasum": ""
             },
             "require": {
@@ -2996,7 +2996,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-03-10T15:30:40+00:00"
+            "time": "2026-03-10T20:25:56+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -4653,16 +4653,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.11.1",
+            "version": "3.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "f438fcc98f92babee98381d399c65336f3a3827f"
+                "reference": "6a7e652845bb018c668220c2a545aded8594fbbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/f438fcc98f92babee98381d399c65336f3a3827f",
-                "reference": "f438fcc98f92babee98381d399c65336f3a3827f",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/6a7e652845bb018c668220c2a545aded8594fbbf",
+                "reference": "6a7e652845bb018c668220c2a545aded8594fbbf",
                 "shasum": ""
             },
             "require": {
@@ -4754,7 +4754,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-29T09:26:29+00:00"
+            "time": "2026-03-11T17:23:39+00:00"
         },
         {
             "name": "nette/php-generator",
@@ -10993,16 +10993,16 @@
         },
         {
             "name": "laravel/breeze",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/breeze.git",
-                "reference": "26c4a6db35abfbf302aa26d338e0b6487844f3c9"
+                "reference": "28cefeaf6af20177ddf5cc7b93e87e4ad79d533f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/breeze/zipball/26c4a6db35abfbf302aa26d338e0b6487844f3c9",
-                "reference": "26c4a6db35abfbf302aa26d338e0b6487844f3c9",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/28cefeaf6af20177ddf5cc7b93e87e4ad79d533f",
+                "reference": "28cefeaf6af20177ddf5cc7b93e87e4ad79d533f",
                 "shasum": ""
             },
             "require": {
@@ -11050,7 +11050,7 @@
                 "issues": "https://github.com/laravel/breeze/issues",
                 "source": "https://github.com/laravel/breeze"
             },
-            "time": "2026-02-21T13:32:22+00:00"
+            "time": "2026-03-10T19:59:01+00:00"
         },
         {
             "name": "laravel/pail",
