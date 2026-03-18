@@ -26,8 +26,10 @@ services:
       - .:/app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${APP_NAMESPACE}.rule=Host(`${APP_HOST:-localhost}`)"
-      - "traefik.http.services.${APP_NAMESPACE}.loadbalancer.server.port=${APP_PORT:-8000}"
+      - "traefik.http.routers.php.rule=Host(`${APP_HOST:-localhost}`)"
+      - "traefik.http.services.php.loadbalancer.server.port=${APP_PORT:-8000}"
+    networks:
+      - app
 
   mailhog:
     image: mailhog/mailhog:latest

@@ -36,6 +36,24 @@ Let's run the command to start the project
 make init
 ```
 
+---
+
+## If you need to run a regular php server
+
+> You may need this when working with filament or just for testing locally
+
+Then this command will launch a regular artisan server
+
+```bash
+make build-simple
+```
+
+The server will be accessible by `localhot:8000`
+
+if you want to communicate without a port, then change `APP_PORT` on 80 port
+
+---
+
 **Docker images - utilities:**
 
 * Laravel 12
