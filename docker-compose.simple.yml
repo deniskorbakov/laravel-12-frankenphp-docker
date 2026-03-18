@@ -1,0 +1,22 @@
+services:
+  php:
+    container_name: php.${APP_NAMESPACE}
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      target: simple
+    ports:
+      - '${APP_PORT}:8000'
+    volumes:
+      - .:/app
+    networks:
+      - app
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog.${APP_NAMESPACE}
+    ports:
+      - "8003:1025"
+      - "8100:8025"
+    networks:
+      - app
