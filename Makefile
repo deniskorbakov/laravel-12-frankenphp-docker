@@ -4,7 +4,7 @@ include .env
 update-project: pull composer-install db-migrate build-front rm-images build-prod restart doc-generate
 
 # a set of commands to initialize a project locally
-init: build composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-wait
+init: build composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build
 
 # a set of commands for initializing a project on production
 init-prod: build-prod composer-install build-front key-generate storage-link db-migrate seed doc-generate restart build-prod
@@ -12,6 +12,9 @@ init-prod: build-prod composer-install build-front key-generate storage-link db-
 build:
 	@echo "Building containers"
 	@docker compose --env-file .env up -d --build
+build-simple:
+	@echo "Building simple php container"
+	@docker compose -f docker-compose.yml -f docker-compose.simple.yml --env-file .env up -d --build
 build-wait:
 	@echo "Building containers"
 	@docker compose --env-file .env up -d --build --wait
