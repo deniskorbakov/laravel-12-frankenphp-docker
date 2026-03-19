@@ -42,6 +42,7 @@
     src: /usr/local/bin/docker-compose
     dest: /usr/bin/docker-compose
     state: link
+    force: yes
 
 - name: Verify Docker Compose installation
   ansible.builtin.command: docker-compose --version
