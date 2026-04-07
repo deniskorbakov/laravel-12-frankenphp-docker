@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3a986ba7697206e3422a7fbf9bea446",
+    "content-hash": "eab8bb15d6327486f3310533a0df6cb4",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -11329,24 +11329,24 @@
         },
         {
             "name": "peckphp/peck",
-            "version": "v0.2.0",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/peckphp/peck.git",
-                "reference": "f5bb798d5176c52793dc6c715b811f0320246d18"
+                "reference": "c223e498dd9b6905b16f3f49e95242ec99bf2ce7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/peckphp/peck/zipball/f5bb798d5176c52793dc6c715b811f0320246d18",
-                "reference": "f5bb798d5176c52793dc6c715b811f0320246d18",
+                "url": "https://api.github.com/repos/peckphp/peck/zipball/c223e498dd9b6905b16f3f49e95242ec99bf2ce7",
+                "reference": "c223e498dd9b6905b16f3f49e95242ec99bf2ce7",
                 "shasum": ""
             },
             "require": {
                 "nunomaduro/termwind": "^1.17.0|^2.3.0",
                 "php": "^8.2",
-                "symfony/console": "^6.4.17|^7.2.1",
-                "symfony/finder": "^6.4.17|^7.2.2",
-                "symfony/process": "^6.4.17|^7.2.2"
+                "symfony/console": "^6.4.17|^7.2.1|^8.0",
+                "symfony/finder": "^6.4.17|^7.2.2|^8.0",
+                "symfony/process": "^6.4.17|^7.2.2|^8.0"
             },
             "require-dev": {
                 "laravel/pint": "^1.20.0",
@@ -11354,7 +11354,7 @@
                 "pestphp/pest-plugin-type-coverage": "^2.8.7|^3.2.3",
                 "phpstan/phpstan": "^1.12.16",
                 "rector/rector": "^1.2.10",
-                "symfony/var-dumper": "^7.2.0"
+                "symfony/var-dumper": "^7.2.0|^8.0"
             },
             "bin": [
                 "bin/peck"
@@ -11384,7 +11384,7 @@
             ],
             "support": {
                 "issues": "https://github.com/peckphp/peck/issues",
-                "source": "https://github.com/peckphp/peck/tree/v0.2.0"
+                "source": "https://github.com/peckphp/peck/tree/v0.3.0"
             },
             "funding": [
                 {
@@ -11400,7 +11400,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-10-06T19:46:59+00:00"
+            "time": "2026-04-07T13:57:55+00:00"
         },
         {
             "name": "pestphp/pest",
